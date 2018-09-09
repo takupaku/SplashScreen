@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="200dp"
         android:id="@+id/logoId"
-        android:src="@drawable/Lighthouse"
+        android:src="@drawable/lighthouse"
         />
 
     <TextView
@@ -23,7 +23,7 @@
         android:textStyle="italic|bold"
         android:gravity="center"
         android:layout_height="wrap_content"
-        android:text="Welcome to Splash (>..<)"
+        android:text="Welcome to Splash"
         android:textSize="30dp" />
 
     <ProgressBar

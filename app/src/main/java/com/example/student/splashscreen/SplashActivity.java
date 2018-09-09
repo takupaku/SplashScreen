@@ -22,10 +22,10 @@ public class SplashActivity extends AppCompatActivity {
 
         //hide statusBar
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         //hide actionbar
-        getSupportActionBar().hide();
+       // getSupportActionBar().hide();
 
         imageView = findViewById(R.id.logoId);
         textView = findViewById(R.id.welcomwTestId);
@@ -34,16 +34,27 @@ public class SplashActivity extends AppCompatActivity {
         Animation animation=  AnimationUtils.loadAnimation(this,R.anim.my_anim);
         imageView.startAnimation(animation);
         textView.startAnimation(animation);
+        Thread thread= new Thread(){
+            @Override
+            public void run() {
+                for(int i=1;i<=5;i++){
+                    progressBar.setProgress(i);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
 
-        progressBar.setMax(5);
-        for(int i=1;i<=5;i++){
-            progressBar.setProgress(i);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
-        }
+        };
+
+        //progressBar.setMax(5);
+
 
 
         Handler handler =new Handler();
@@ -52,9 +63,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //calling run after 5 sec
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+//                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+//                startActivity(intent);
+//                finish();
             }
         }, 5000);
 
